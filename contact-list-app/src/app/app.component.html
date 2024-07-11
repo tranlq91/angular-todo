@@ -18,7 +18,7 @@
     <label for="contactAddress">Address: </label><br>
     <input type="text" id="contactAddress" #contactAddress placeholder="Add Address">
   </div>
-  <button class="submit-btn" (click)="addContact(contactName.value, contactAddress.value, contactEmail.value, contactPhone.value)">{{editingId > -1 ? 'Edit' : 'Add'}}</button>
+  <button class="submit-btn" (click)="addContact(contactName.value, contactEmail.value, contactAddress.value, contactPhone.value)">{{editingId > -1 ? 'Edit' : 'Add'}}</button>
   <button class="submit-btn" [hidden]="editingId == -1" (click)="resetData()">Cancel</button>
 </div>
 
@@ -27,7 +27,6 @@
    [value]="contactList"
    [scrollable]="true"
    scrollHeight="400px"
-   wid
    [globalFilterFields]=
      "['id', 'name', 'phone', 'email', 'address']"
    [tableStyle]="{ 'margin-left': '10px', 'margin-right': '10px' }">
@@ -72,7 +71,7 @@
       <td style="max-width:400px">
         <i class="fas fa-spinner fa-spin" style="padding: 5px" [ngStyle]="{'display': contactItem.isEditing ? '' : 'none'}"></i>
         <button style="margin: 5px" (click)="editContact(contactItem)" [disabled]="contactItem.isEditing">Edit</button>
-        <button style="margin: 5px" (click)="deleteContact(contactItem.id)" [disabled]="contactItem.isEditing">Delete</button>
+        <button style="margin: 5px" (click)="deleteContact(contactItem.id)" >Delete</button>
       </td>
     </tr>
   </ng-template>

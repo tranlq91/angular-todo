@@ -105,6 +105,10 @@ export class AppComponent {
         email: email.trim(),
         isEditing: false
       };
+      if (this.editingId != -1) {
+        newContactItem.id = this.editingId;
+        this.contactList = this.contactList.filter(item => item.id !== this.editingId);
+      }
       this.contactList.push(newContactItem);
       this.saveContactList();
       this.resetData();
