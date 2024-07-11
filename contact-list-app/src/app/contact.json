@@ -1,0 +1,44 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Andrew Owen",
+      "address": "District 7, HCMC",
+      "phone": "0987654321",
+      "email": "belike@gmail.com",
+      "isEditing": false
+    },
+    {
+      "id": 2,
+      "name": "Michel Le",
+      "address": "Cau Giay, Ha Noi",
+      "phone": "01230657242",
+      "email": "michel@gmail.com",
+      "isEditing": false
+    },
+    {
+      "id": 3,
+      "name": "kevin Alker",
+      "address": "District 1, HCMC",
+      "phone": "0778765212",
+      "email": "kevin@gmail.com",
+      "isEditing": false
+    },
+    {
+      "id": 4,
+      "name": "Herry Ford",
+      "address": "Phan Thiet, Binh Thuan",
+      "phone": "0332579123",
+      "email": "herry@gmail.com",
+      "isEditing": false
+    },
+    {
+      "id": 5,
+      "name": "Owen Harry",
+      "address": "Lien Chieu, Da nang",
+      "phone": "0982651987",
+      "email": "owen@gmail.com",
+      "isEditing": false
+    }
+  ]
+}

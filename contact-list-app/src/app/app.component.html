@@ -1,0 +1,79 @@
+<h2 style="color: green">Contact Lists</h2>
+<h4>Angular Table</h4>
+
+<div>
+  <div class="input-group">
+    <label for="contactName">Name: </label><br>
+    <input type="text" id="contactName" #contactName placeholder="Add name">
+  </div>
+  <div class="input-group">
+    <label for="contactPhone">Phone: </label><br>
+    <input type="text" id="contactPhone" #contactPhone placeholder="Add phone">
+  </div>
+  <div class="input-group">
+    <label for="contactEmail">Email: </label><br>
+    <input type="text" id="contactEmail" #contactEmail placeholder="Add email">
+  </div>
+  <div class="input-group">
+    <label for="contactAddress">Address: </label><br>
+    <input type="text" id="contactAddress" #contactAddress placeholder="Add Address">
+  </div>
+  <button class="submit-btn" (click)="addContact(contactName.value, contactAddress.value, contactEmail.value, contactPhone.value)">{{editingId > -1 ? 'Edit' : 'Add'}}</button>
+  <button class="submit-btn" [hidden]="editingId == -1" (click)="resetData()">Cancel</button>
+</div>
+
+<p-table
+   #dt
+   [value]="contactList"
+   [scrollable]="true"
+   scrollHeight="400px"
+   wid
+   [globalFilterFields]=
+     "['id', 'name', 'phone', 'email', 'address']"
+   [tableStyle]="{ 'margin-left': '10px', 'margin-right': '10px' }">
+  <ng-template pTemplate="caption">
+    <div class="header-filter">
+      <i class="fas fa-search" style="padding: 5px"></i>
+      <input type="text"
+         pInputText size="50"
+         placeholder="Filter"
+         (input)="applyFilterGlobal(dt, $event)"
+      />
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr class="tr-header">
+      <th class="th-header">Id</th>
+      <th class="th-header">Name</th>
+      <th class="th-header">Phone</th>
+      <th class="th-header">Email</th>
+      <th class="th-header">Address</th>
+      <th class="th-header">Actions</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-contactItem>
+    <tr>
+      <td style="max-width:40px">
+        {{ contactItem.id }}
+      </td>
+      <td style="max-width:40px">
+        {{ contactItem.name }}
+      </td>
+      <td style="max-width:40px">
+        {{ contactItem.phone }}
+      </td>
+      <td style="max-width:40px">
+        {{ contactItem.email }}
+      </td>
+      <td style="max-width:40px">
+      {{ contactItem.address }}
+      </td>
+      <td style="max-width:400px">
+        <i class="fas fa-spinner fa-spin" style="padding: 5px" [ngStyle]="{'display': contactItem.isEditing ? '' : 'none'}"></i>
+        <button style="margin: 5px" (click)="editContact(contactItem)" [disabled]="contactItem.isEditing">Edit</button>
+        <button style="margin: 5px" (click)="deleteContact(contactItem.id)" [disabled]="contactItem.isEditing">Delete</button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
